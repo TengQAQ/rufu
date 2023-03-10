@@ -8,7 +8,6 @@
             <id property="husbandId" column="husband_id" jdbcType="INTEGER"/>
             <result property="numberId" column="number_id" jdbcType="VARCHAR"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="occupation" column="occupation" jdbcType="VARCHAR"/>
             <result property="illness" column="illness" jdbcType="VARCHAR"/>
             <result property="smokingOtherId" column="smoking_other_id" jdbcType="INTEGER"/>
             <result property="elementaryId" column="elementary_id" jdbcType="VARCHAR"/>
@@ -17,7 +16,12 @@
             <result property="smokingQuantity" column="smoking_quantity" jdbcType="VARCHAR"/>
             <result property="drinkOtherId" column="drink_other_id" jdbcType="INTEGER"/>
             <result property="drinkQuantity" column="drink_quantity" jdbcType="VARCHAR"/>
-            <result property="relationOtherId" column="relation_other_id" jdbcType="INTEGER"/>
+            <result property="relationOtherId" column="relation_other_id" jdbcType="INTEGER" />
+<!--            通过关联映射实现子查询-->
+            <association property="occupation"
+                         column="occupation"
+                         fetchType="lazy"
+                         select="com.hxzy.mapper.OtherMapper.selectByTable"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -32,7 +36,7 @@
         select
         <include refid="Base_Column_List" />
         from husband
-        where  husband_id = #{husbandId,jdbcType=INTEGER} 
+        where  elementary_id = #{husbandId,jdbcType=INTEGER}
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

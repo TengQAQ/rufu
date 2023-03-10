@@ -8,6 +8,6 @@ import com.hxzy.entity.Husband;
 * @createDate 2023-03-06 14:18:06
 * @Entity com.hxzy.entity.Husband
 */
-public interface HusbandMapper extends BaseMapper<Integer,Husband>{
+public interface HusbandMapper extends BaseMapper<Long,Husband>{
 
 }

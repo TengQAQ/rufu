@@ -3,6 +3,7 @@ package com.hxzy.web.servlet;
 import com.alibaba.fastjson2.JSONObject;
 import com.hxzy.Dto.PageDto;
 import com.hxzy.Dto.SearchDto;
+import com.hxzy.entity.Elementary;
 import com.hxzy.service.ElementaryService;
 import com.hxzy.service.Impl.ElementaryServiceImpl;
 import com.hxzy.vo.Result;
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
@@ -55,20 +57,24 @@ public class ElementaryServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Enumeration<String> parameterNames = req.getParameterNames();
-		JSONObject jsonObject = new JSONObject();
-		// 类似于一个迭代器
-		while (parameterNames.hasMoreElements()) {
-			// 得到参数名
-			String key = parameterNames.nextElement();
-			// 从request中根据参数名获取值
-			String parameter = req.getParameter(key);
-			System.out.println(key + " --------------------->" + parameter);
-			// 将url参数以及值插入到map集合
-			jsonObject.put(key, parameter);
+		try (BufferedReader reader = req.getReader()) {
+			StringBuilder builder = new StringBuilder();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				builder.append(line);
+			}
+
+			String json = builder.toString();
+
+			Elementary elementary = JSONObject.parseObject(json, Elementary.class);
+			elementary.setElementaryId(elementary.getNumberId());
+			System.out.println("ele =======================" + elementary);
+			Result result = service.insertSelective(elementary);
+			String jsonString = JSONObject.toJSONString(result);
+			PrintWriter writer = resp.getWriter();
+			writer.write(jsonString);
+			writer.flush();
+			writer.close();
 		}
-		SearchDto dto = jsonObject.to(SearchDto.class);
-		System.out.println(dto.toString());
-		Result result = service.SelectAllElementary(dto);
 	}
 }

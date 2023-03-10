@@ -10,7 +10,7 @@ public class Husband implements Serializable {
     /**
      * 主键
      */
-    private Integer husbandId;
+    private Long husbandId;
 
     /**
      * 身份证号码
@@ -77,14 +77,14 @@ public class Husband implements Serializable {
     /**
      * 主键
      */
-    public Integer getHusbandId() {
+    public Long getHusbandId() {
         return husbandId;
     }
 
     /**
      * 主键
      */
-    public void setHusbandId(Integer husbandId) {
+    public void setHusbandId(Long husbandId) {
         this.husbandId = husbandId;
     }
 

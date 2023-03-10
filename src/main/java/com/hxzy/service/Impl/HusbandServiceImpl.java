@@ -1,0 +1,50 @@
+package com.hxzy.service.Impl;
+
+import com.hxzy.entity.Elementary;
+import com.hxzy.entity.Husband;
+import com.hxzy.mapper.HusbandMapper;
+import com.hxzy.mapper.Impl.HusbandMapperImpl;
+import com.hxzy.service.HusbandService;
+import com.hxzy.vo.CodeEnum;
+import com.hxzy.vo.Result;
+
+public class HusbandServiceImpl implements HusbandService {
+	private HusbandMapper mapper = new HusbandMapperImpl();
+	@Override
+	public Result deleteByPrimaryKey(Long id) {
+		return null;
+	}
+
+	@Override
+	public Result insert(Husband record) {
+		return null;
+	}
+
+	@Override
+	public Result insertSelective(Husband record) {
+		return null;
+	}
+
+	@Override
+	public Result selectByPrimaryKey(Long id) {
+		Elementary elementary = mapper.selectByPrimaryKey(id);
+		Result result = null;
+		if (elementary != null){
+			result.of(CodeEnum.SUCCESS);
+			result.setData(elementary);
+		}else {
+			result.of(CodeEnum.FAILURE);
+		}
+		return result;
+	}
+
+	@Override
+	public Result updateByPrimaryKeySelective(Husband record) {
+		return null;
+	}
+
+	@Override
+	public Result updateByPrimaryKey(Husband record) {
+		return null;
+	}
+}
