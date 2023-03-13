@@ -9,7 +9,7 @@ public interface BaseMapper <PK,Model>{
 
 	int insertSelective(Model record);
 
-	Elementary selectByPrimaryKey(PK id);
+	Model selectByPrimaryKey(PK id);
 
 	int updateByPrimaryKeySelective(Model record);
 

@@ -1,6 +1,5 @@
 package com.hxzy.service.Impl;
 
-import com.hxzy.entity.Elementary;
 import com.hxzy.entity.Husband;
 import com.hxzy.mapper.HusbandMapper;
 import com.hxzy.mapper.Impl.HusbandMapperImpl;
@@ -27,13 +26,13 @@ public class HusbandServiceImpl implements HusbandService {
 
 	@Override
 	public Result selectByPrimaryKey(Long id) {
-		Elementary elementary = mapper.selectByPrimaryKey(id);
+		Husband husband = mapper.selectByPrimaryKey(id);
 		Result result = null;
-		if (elementary != null){
-			result.of(CodeEnum.SUCCESS);
-			result.setData(elementary);
+		if (husband != null){
+			result = Result.of(CodeEnum.SUCCESS);
+			result.setData(husband);
 		}else {
-			result.of(CodeEnum.FAILURE);
+			result = result.of(CodeEnum.FAILURE);
 		}
 		return result;
 	}

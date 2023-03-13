@@ -24,7 +24,7 @@ public class OccupationMapperImpl implements OccupationMapper {
 	}
 
 	@Override
-	public Elementary selectByPrimaryKey(Integer id) {
+	public Occupation selectByPrimaryKey(Integer id) {
 		return null;
 	}
 

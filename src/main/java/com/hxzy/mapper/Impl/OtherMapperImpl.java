@@ -25,7 +25,7 @@ public class OtherMapperImpl implements OtherMapper {
 	}
 
 	@Override
-	public Elementary selectByPrimaryKey(Integer id) {
+	public Other selectByPrimaryKey(Integer id) {
 		return SessionHelper.query(SqlSession ->SqlSession.getMapper(OtherMapper.class).selectByPrimaryKey(id));
 	}
 

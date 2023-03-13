@@ -28,6 +28,7 @@ public class HusbandServlet extends HttpServlet {
 		String json = builder.toString();
 		System.out.println("json"+json);
 		Result result = service.selectByPrimaryKey(Long.valueOf(json));
+		System.out.println(result.toString());
 		String jsonString = JSONObject.toJSONString(result);
 		System.out.println(jsonString);
 

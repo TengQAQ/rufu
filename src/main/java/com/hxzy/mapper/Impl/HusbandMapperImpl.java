@@ -22,7 +22,7 @@ public class HusbandMapperImpl implements HusbandMapper {
 	}
 
 	@Override
-	public Elementary selectByPrimaryKey(Long id) {
+	public Husband selectByPrimaryKey(Long id) {
 		return SessionHelper.query(sqlSession -> sqlSession.getMapper(HusbandMapper.class).selectByPrimaryKey(id));
 	}
 

@@ -1,5 +1,6 @@
 package com.hxzy.mapper;
 
+import com.hxzy.Dto.UserLoginDto;
 import com.hxzy.entity.Role;
 
 /**
@@ -10,4 +11,5 @@ import com.hxzy.entity.Role;
 */
 public interface RoleMapper extends BaseMapper<Integer,Role>{
 
+	Role selectByNumber(String dto);
 }

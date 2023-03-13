@@ -17,11 +17,12 @@
             <result property="drinkOtherId" column="drink_other_id" jdbcType="INTEGER"/>
             <result property="drinkQuantity" column="drink_quantity" jdbcType="VARCHAR"/>
             <result property="relationOtherId" column="relation_other_id" jdbcType="INTEGER" />
+            <result property="occupation" column="occupation" jdbcType="INTEGER" />
 <!--            通过关联映射实现子查询-->
-            <association property="occupation"
-                         column="occupation"
-                         fetchType="lazy"
-                         select="com.hxzy.mapper.OtherMapper.selectByTable"/>
+<!--            <association property="occupation"-->
+<!--                         column="occupation"-->
+<!--                         fetchType="lazy"-->
+<!--                         select="com.hxzy.mapper.OtherMapper.selectByTable"/>-->
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -36,7 +37,7 @@
         select
         <include refid="Base_Column_List" />
         from husband
-        where  elementary_id = #{husbandId,jdbcType=INTEGER}
+        where  elementary_id = #{id}
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
